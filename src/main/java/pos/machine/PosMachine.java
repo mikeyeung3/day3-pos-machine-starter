@@ -49,12 +49,13 @@ public class PosMachine {
                     Item item = findItemByBarcode(barcode);
                     if (item != null) {
                         int subtotal = item.getPrice() * quantity;
-                        lines.append(String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)%n",
+                        // Use \n instead of %n to ensure consistent Unix-style line endings matching the test expectation
+                        lines.append(String.format("Name: %s, Quantity: %d, Unit price: %d (yuan), Subtotal: %d (yuan)\n",
                                 item.getName(), quantity, item.getPrice(), subtotal));
                     }
                 });
         lines.append(divider);
-        lines.append(String.format("Total: %d (yuan)%n", total));
+        lines.append(String.format("Total: %d (yuan)\n", total));
         lines.append(footer);
         return lines;
     }
